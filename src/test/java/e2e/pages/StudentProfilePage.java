@@ -8,6 +8,8 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class StudentProfilePage {
 
+    public HeaderMenuStudent headerMenuStudent = new HeaderMenuStudent();
+
     private static SelenideElement studentName = $x("//h1[@xpath=\"1\"]");
 
 

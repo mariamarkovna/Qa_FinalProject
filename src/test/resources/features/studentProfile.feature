@@ -27,7 +27,7 @@ Feature:Student role.View student profile in Student directory
 
     #SignInFormPage
     And we moved on SingIn Page
-    * we close the driver
+    And we close the driver
 
 
 

@@ -10,7 +10,7 @@ public class StudentDirectoryPage {
     private static By wellcomeGreetings= By.xpath("//h1[contains(text(),'Welcome to our')]");
 
     private static By searchField= By.xpath("//input[@id=':r0:']");
-    private SelenideElement viewProfileBtn= $(".MuiButton-contained");
+    private SelenideElement viewProfileBtn= $x("//a[@type='button']");
     private SelenideElement studentProfile= $x("//div[@class='list-item-wrapper MuiBox-root css-ga4y95']");
 
 

@@ -8,9 +8,10 @@ import static com.codeborne.selenide.Selenide.$x;
 public class HeaderMenuStudent {
 
     private static SelenideElement loggedInIcon= $x("//div[@class='MuiBox-root css-4tv0ih']//button[@type='button']");
+    ////div[@class='MuiBox-root css-4tv0ih']//button[@type='button']
     private static SelenideElement sudentDirectoryBtn = $("a.MuiButtonBase-root:nth-child(4)");
 
-    private static SelenideElement menuProfile = $x("//div[@class='MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiPaper-root MuiMenu-paper MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation8 MuiPopover-paper css-19dtroz'");
+    private static SelenideElement menuProfile = $x("//ul[@class='MuiList-root MuiList-padding MuiMenu-list css-r8u8y9']");
 
     private static SelenideElement signOutBtn = $x("/html/body/div[1]/div[1]/div/div[3]/ul/a[2]");
 
@@ -22,6 +23,11 @@ public class HeaderMenuStudent {
     public void clickStudentDirectoryBtn(){
 
         $(sudentDirectoryBtn).click();
+    }
+
+    public void clickProfileIcon(){
+
+        $(loggedInIcon).click();
     }
 
     public SelenideElement verifyDropDownMenu(){

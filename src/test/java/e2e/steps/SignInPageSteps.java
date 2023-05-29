@@ -4,12 +4,14 @@ import com.codeborne.selenide.SelenideElement;
 import e2e.pages.SignInPage;
 import io.cucumber.java8.En;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.setWebDriver;
+import static org.openqa.selenium.devtools.v108.page.Page.close;
 
 public class SignInPageSteps implements En {
 
@@ -35,8 +37,10 @@ public class SignInPageSteps implements En {
         });
 
         And("we close the driver", () ->{
-
+            driver = new FirefoxDriver();
+            setWebDriver(driver);
             driver.close();
+
 
         });
     }

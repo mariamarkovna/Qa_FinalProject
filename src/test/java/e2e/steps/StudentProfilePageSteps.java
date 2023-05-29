@@ -16,15 +16,17 @@ public class StudentProfilePageSteps implements En {
     public StudentProfilePageSteps(){
 
         Then("we can see all information about this student", () ->{
+            studentProfilePage=page(StudentProfilePage.class);
 
 
         });
 
         And("click profile icon", () ->{
             headerMenuStudent= page(HeaderMenuStudent.class);
-            headerMenuStudent.clickStudentDirectoryBtn();
+            //studentProfilePage.headerMenuStudent.clickProfileIcon();
+            headerMenuStudent.clickProfileIcon();
 
-            sleep(5000);
+
 
         });
 
