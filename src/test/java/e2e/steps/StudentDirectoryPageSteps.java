@@ -13,7 +13,7 @@ public class StudentDirectoryPageSteps implements En {
 
     public StudentDirectoryPageSteps(){
 
-        Given("that we see 'Welcome to our student directory'", () ->{
+        When("we see 'Welcome to our student directory'", () ->{
             studentDirectoryPage = page(StudentDirectoryPage.class);
 
             studentDirectoryPage.appearStDirectoryPage().shouldHave(text("Welcome to our"));

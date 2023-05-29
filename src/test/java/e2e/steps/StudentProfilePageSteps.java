@@ -6,8 +6,7 @@ import e2e.pages.StudentProfilePage;
 import io.cucumber.java8.En;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 
 public class StudentProfilePageSteps implements En {
 
@@ -24,6 +23,8 @@ public class StudentProfilePageSteps implements En {
         And("click profile icon", () ->{
             headerMenuStudent= page(HeaderMenuStudent.class);
             headerMenuStudent.clickStudentDirectoryBtn();
+
+            sleep(5000);
 
         });
 

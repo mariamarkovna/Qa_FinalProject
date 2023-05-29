@@ -3,6 +3,7 @@ package e2e.pages;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class StudentDirectoryPage {
 
@@ -10,7 +11,7 @@ public class StudentDirectoryPage {
 
     private static By searchField= By.xpath("//input[@id=':r0:']");
     private SelenideElement viewProfileBtn= $(".MuiButton-contained");
-    private SelenideElement studentProfile= $("//div[@class='llist-item-wrapper MuiBox-root css-ga4y95']");
+    private SelenideElement studentProfile= $x("//div[@class='list-item-wrapper MuiBox-root css-ga4y95']");
 
 
     public SelenideElement appearStDirectoryPage() {

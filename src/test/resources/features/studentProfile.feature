@@ -14,7 +14,7 @@ Feature:Student role.View student profile in Student directory
     When we click Student Directory button
 
     #StudentDirectoryPage
-    Given that we see "Welcome to our student directory"
+    When we see 'Welcome to our student directory'
     Then we enter existing name of Student in search field
     And we see profile of this student
     When we press View Profile button
