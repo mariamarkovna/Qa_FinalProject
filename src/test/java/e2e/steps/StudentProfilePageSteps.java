@@ -1,11 +1,10 @@
 package e2e.steps;
 
 import com.codeborne.selenide.Condition;
-import e2e.pages.HeaderMenuStudent;
-import e2e.pages.StudentProfilePage;
+import pages.HeaderMenuStudent;
+import pages.StudentProfilePage;
 import io.cucumber.java8.En;
 
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
 public class StudentProfilePageSteps implements En {

@@ -1,7 +1,7 @@
 package e2e.steps;
 
 
-import e2e.pages.StudentDirectoryPage;
+import pages.StudentDirectoryPage;
 import io.cucumber.java8.En;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.page;

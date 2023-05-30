@@ -1,7 +1,6 @@
-package e2e.pages;
+package pages;
 
 import com.codeborne.selenide.SelenideElement;
-import io.cucumber.java8.En;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;

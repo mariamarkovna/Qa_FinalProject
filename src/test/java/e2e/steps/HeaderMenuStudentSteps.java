@@ -1,7 +1,7 @@
 package e2e.steps;
 
 import com.codeborne.selenide.Condition;
-import e2e.pages.HeaderMenuStudent;
+import pages.HeaderMenuStudent;
 import io.cucumber.java8.En;
 
 import static com.codeborne.selenide.Selenide.page;

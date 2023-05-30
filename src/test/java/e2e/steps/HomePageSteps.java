@@ -1,17 +1,12 @@
 package e2e.steps;
 
-import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.SelenideElement;
-import e2e.pages.HeaderMenu;
-import e2e.pages.HomePage;
-import e2e.pages.SignInPage;
+import pages.HomePage;
+import pages.SignInPage;
 import io.cucumber.java8.En;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.*;
 
@@ -43,6 +38,11 @@ public class HomePageSteps implements En {
             signInPage.formIsShown().shouldHave(text("Use the"));
         });
 
+        And("we close the driver", () ->{
+            driver.close();
+        });
     }
+
+
 
 }
