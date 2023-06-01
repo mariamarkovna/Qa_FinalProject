@@ -21,7 +21,7 @@ public class StudentDirectoryPageSteps implements En {
         });
 
         Then("we enter existing name of Student in search field", () ->{
-            studentDirectoryPage.choseAStudent("Malik");
+            studentDirectoryPage.enterAStudentName("Malik");
 
         });
 
