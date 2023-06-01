@@ -34,7 +34,7 @@ public class UpdateProfilePage {
     }
 
     @Step("Chose a role")
-    public SelenideElement choseARole(){
+    public SelenideElement choseARole() {
 
         $(roleInputField).click();
         verifyRoleForm();
@@ -42,18 +42,14 @@ public class UpdateProfilePage {
         return null;
     }
 
-
-
     @Step("fill student Update Profile form ")
-    public void fillStudUpdateProfileForm(String fullName,String email, String aboutMe,String enternalProfile) {
+    public void fillStudUpdateProfileForm(String fullName, String email, String aboutMe, String enternalProfile) {
         choseARole();
         $(fullNameInputField).val(fullName);
         fillEmail(email);
         $(aboutMeInputField).val(aboutMe);
         chosePhoto();
         $(enternalProfileInputField).val(enternalProfile);
-
-
     }
 
     @Step("enter Email in email field ")
@@ -65,10 +61,9 @@ public class UpdateProfilePage {
     @Step("add a photo in Avatar field")
     public void chosePhoto() {
         //$(avatarImageInputField).click();
-        SelenideElement photoInput= $(avatarImageInputField);
+        SelenideElement photoInput = $(avatarImageInputField);
         String filePath = "C:/Users/maria/Desktop/для даны/frozen.jpg";
         photoInput.sendKeys(filePath);
-
     }
 
     @Step("fill Major field")
@@ -85,9 +80,9 @@ public class UpdateProfilePage {
     @Step("Check Update profile")
     public void changeColorBtn() {
         //$(avatarImageInputField).click();
-        SelenideElement button= $(updateProfileBtn);
+        SelenideElement button = $(updateProfileBtn);
         String colorOfButton = button.getCssValue("background-color:#2c2921");
         clickUpdateProfileBtn();
-        button.shouldNotHave(Condition.attribute("background-color:#2c2921",colorOfButton));
+        button.shouldNotHave(Condition.attribute("background-color:#2c2921", colorOfButton));
     }
 }

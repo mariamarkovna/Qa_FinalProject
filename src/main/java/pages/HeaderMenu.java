@@ -11,7 +11,7 @@ public class HeaderMenu {
     private static SelenideElement signInBtn = $x("/html/body/div[1]/div[1]/header/div/div/div/div/a[1]");
 
     @Step("Click Sign In button in Header")
-    public void clickSignInBtn(){
+    public void clickSignInBtn() {
         $(signInBtn).click();
     }
 }

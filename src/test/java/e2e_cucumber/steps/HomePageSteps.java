@@ -1,4 +1,4 @@
-package e2e.steps;
+package e2e_cucumber.steps;
 
 import pages.HomePage;
 import pages.SignInPage;
@@ -24,25 +24,21 @@ public class HomePageSteps implements En {
             setWebDriver(driver);
             homePage = open(baseUrl, HomePage.class);
             sleep(5000);
-            //homePage.HPIShown().shouldHave(text("Welcome to NoCode University's Student Portal"));
         });
 
-        And("we click SignIn button in Header",() -> {
+        And("we click SignIn button in Header", () -> {
             homePage.headerMenu.clickSignInBtn();
         });
 
-        Then("we see a SignIn form",() ->{
+        Then("we see a SignIn form", () -> {
             signInPage = page(SignInPage.class);
-//            SelenideElement f = signInPage.formIsShown();
-//            f.shouldHave(text("the"));
             signInPage.formIsShown().shouldHave(text("Use the"));
         });
 
-        And("we close the driver", () ->{
+        And("we close the driver", () -> {
             driver.close();
         });
     }
-
 
 
 }

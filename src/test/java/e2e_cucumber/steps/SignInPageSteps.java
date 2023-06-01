@@ -1,9 +1,8 @@
-package e2e.steps;
+package e2e_cucumber.steps;
 
 import pages.SignInPage;
 import io.cucumber.java8.En;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
@@ -22,22 +21,14 @@ public class SignInPageSteps implements En {
 
         });
 
-        And("we click SignIn button", () ->{
+        And("we click SignIn button", () -> {
             signInPage.clickSignInButn();
         });
 
-        And("we moved on SingIn Page", () ->{
+        And("we moved on SingIn Page", () -> {
 
             signInPage.formIsShown().shouldHave(text("Use the"));
 
         });
-
-//        And("we close the driver", () ->{
-//            driver.close();
-//        });
     }
-
-
-
-
 }

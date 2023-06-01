@@ -1,4 +1,4 @@
-package e2e.steps;
+package e2e_cucumber.steps;
 
 import com.codeborne.selenide.Condition;
 import pages.HeaderMenuStudent;
@@ -12,35 +12,26 @@ public class StudentProfilePageSteps implements En {
     StudentProfilePage studentProfilePage;
     HeaderMenuStudent headerMenuStudent;
 
-    public StudentProfilePageSteps(){
+    public StudentProfilePageSteps() {
 
-        Then("we can see all information about this student", () ->{
-            studentProfilePage=page(StudentProfilePage.class);
-
-
+        Then("we can see all information about this student", () -> {
+            studentProfilePage = page(StudentProfilePage.class);
         });
 
-        And("click profile icon", () ->{
-            headerMenuStudent= page(HeaderMenuStudent.class);
-            //studentProfilePage.headerMenuStudent.clickProfileIcon();
+        And("click profile icon", () -> {
+            headerMenuStudent = page(HeaderMenuStudent.class);
             headerMenuStudent.clickProfileIcon();
-
-
-
         });
 
 
-        When("we see drop-down menu", () ->{
+        When("we see drop-down menu", () -> {
 
             headerMenuStudent.verifyDropDownMenu().shouldBe(Condition.visible);
-
-
         });
 
 
-        Then("we click SignOut button", () ->{
+        Then("we click SignOut button", () -> {
             headerMenuStudent.clickSignOutBtn();
-
         });
     }
 }

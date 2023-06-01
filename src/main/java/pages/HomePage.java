@@ -15,6 +15,8 @@ public class HomePage {
     @Step("Home page is exist")
     public SelenideElement HPIsShown() {
         return $(homePageElement);
-    };
+    }
+
+    ;
 
 }

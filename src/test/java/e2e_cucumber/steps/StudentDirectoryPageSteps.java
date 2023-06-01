@@ -1,4 +1,4 @@
-package e2e.steps;
+package e2e_cucumber.steps;
 
 
 import pages.StudentDirectoryPage;

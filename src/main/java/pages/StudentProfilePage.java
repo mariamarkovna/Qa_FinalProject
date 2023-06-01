@@ -14,6 +14,7 @@ public class StudentProfilePage {
 
     @Step("Student name shown")
     public SelenideElement studentsNameIsShown() {
-        return $(studentName);}
+        return $(studentName);
+    }
 
 }

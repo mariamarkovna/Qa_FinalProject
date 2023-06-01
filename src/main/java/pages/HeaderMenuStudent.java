@@ -41,7 +41,7 @@ public class HeaderMenuStudent {
     }
 
     @Step("Click my profile button")
-    public void clickMyProfileBtn(){
+    public void clickMyProfileBtn() {
         $(myProfileBtn).click();
     }
 
@@ -51,7 +51,7 @@ public class HeaderMenuStudent {
     }
 
     @Step("Click My profile")
-    public void clickMyProfile(){
+    public void clickMyProfile() {
         verifyAuthIcon();
         clickProfileIcon();
         verifyDropDownMenu();
@@ -59,7 +59,7 @@ public class HeaderMenuStudent {
     }
 
     @Step("Click Sign Out")
-    public void clickSignOut(){
+    public void clickSignOut() {
         clickProfileIcon();
         verifyDropDownMenu();
         verifyDropDownMenu();
