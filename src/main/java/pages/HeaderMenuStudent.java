@@ -62,7 +62,6 @@ public class HeaderMenuStudent {
     public void clickSignOut() {
         clickProfileIcon();
         verifyDropDownMenu();
-        verifyDropDownMenu();
         clickSignOutBtn();
     }
 

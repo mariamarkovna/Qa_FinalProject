@@ -1,4 +1,4 @@
-package apiUi.model;
+package apiUi.API.model;
 
 import lombok.*;
 
@@ -12,5 +12,6 @@ public class UserDto {
     private String email;
     private String password;
     private Object generate_magic_link;
+    private Object magic_link;
 
 }
