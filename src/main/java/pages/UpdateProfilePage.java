@@ -60,7 +60,6 @@ public class UpdateProfilePage {
 
     @Step("add a photo in Avatar field")
     public void chosePhoto() {
-        //$(avatarImageInputField).click();
         SelenideElement photoInput = $(avatarImageInputField);
         String filePath = "C:/Users/maria/Desktop/для даны/frozen.jpg";
         photoInput.sendKeys(filePath);
@@ -79,7 +78,6 @@ public class UpdateProfilePage {
 
     @Step("Check Update profile")
     public void changeColorBtn() {
-        //$(avatarImageInputField).click();
         SelenideElement button = $(updateProfileBtn);
         String colorOfButton = button.getCssValue("background-color:#2c2921");
         clickUpdateProfileBtn();
