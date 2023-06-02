@@ -11,8 +11,8 @@ import pages.SignInPage;
 import regressionTests.BaseTest;
 
 public class CheckCreateUserApi extends BaseTest {
-    @Test(testName= "tc_api1:Create user via API")
-    @Description("Checking created user via API")
+    @Test
+    @Description("Checking created user via API with UI")
     public void loginCreateUserApi() {
         new HeaderMenu().clickSignInBtn();
         new SignInPage().signIn("faker@gmail.com", "123456");
