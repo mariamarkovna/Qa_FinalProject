@@ -3,16 +3,17 @@ package apiUi.API.tests;
 import apiUi.API.ApiBase;
 import apiUi.API.enums.EndPoint;
 import apiUi.API.model.UserDto;
-import apiUi.Ui.CheckDeleteUserApi;
-import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Description;
 import io.restassured.response.Response;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.HeaderMenu;
+import pages.SignInPage;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.open;
 
-public class DeleteUserApiTests extends ApiBase {
+public class DeleteUserApiAndCheckUITests extends ApiBase {
     UserDto userDto;
     Response response;
 
@@ -32,11 +33,13 @@ public class DeleteUserApiTests extends ApiBase {
 
     @Test(testName = "tc_api2:Delete user via API")
     @Description("Checking deleted user via API")
-    public void deleteUserTest() {
+    public void deleteUserAndCheckUITest() {
         doDeleteRequest(EndPoint.DELETE_USER, 200, email);
-        open("https://jere237.softr.app");
-        WebDriverRunner.getWebDriver().manage().window().maximize();
-        new CheckDeleteUserApi();
+
+        new HeaderMenu().clickSignInBtn();
+        SignInPage signInPage = new SignInPage();
+        signInPage.signIn("faker@gmail.com", "123456");
+        signInPage.confirmErrorMessage().shouldHave(text("Invalid email or password"));
 
     }
 
