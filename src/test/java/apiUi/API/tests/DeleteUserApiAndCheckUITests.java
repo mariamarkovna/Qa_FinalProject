@@ -11,7 +11,7 @@ import pages.HeaderMenu;
 import pages.SignInPage;
 
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.open;
+
 
 public class DeleteUserApiAndCheckUITests extends ApiBase {
     UserDto userDto;
@@ -42,5 +42,4 @@ public class DeleteUserApiAndCheckUITests extends ApiBase {
         signInPage.confirmErrorMessage().shouldHave(text("Invalid email or password"));
 
     }
-
 }

@@ -17,11 +17,10 @@ import static com.codeborne.selenide.Selenide.open;
 public class ApiBase {
 
 
-
     protected Faker faker = new Faker();
-    final String SOFTR_API_KEY="khIbAyJIU5CIuh1oDuBRx1s49";
-    final String BASE_URL ="https://studio-api.softr.io/v1";
-    final String SOFTR_DOMAIN= "jere237.softr.app";
+    final String SOFTR_API_KEY = "khIbAyJIU5CIuh1oDuBRx1s49";
+    final String BASE_URL = "https://studio-api.softr.io/v1";
+    final String SOFTR_DOMAIN = "jere237.softr.app";
 
     RequestSpecification spec = new RequestSpecBuilder()
             .setBaseUri(BASE_URL)
@@ -30,7 +29,7 @@ public class ApiBase {
             .addHeader("Softr-Domain", SOFTR_DOMAIN)
             .build();
 
-    public Response doPostRequest(EndPoint endPoint, int statusCode, Object dto){
+    public Response doPostRequest(EndPoint endPoint, int statusCode, Object dto) {
         Response response = RestAssured.given()
                 .spec(spec)
                 .body(dto)
@@ -44,7 +43,7 @@ public class ApiBase {
         return response;
     }
 
-    public Response doDeleteRequest(EndPoint endPoint, int statusCode, String email){
+    public Response doDeleteRequest(EndPoint endPoint, int statusCode, String email) {
         Response response = RestAssured.given()
                 .spec(spec)
                 .when()
@@ -67,7 +66,6 @@ public class ApiBase {
         open("https://jere237.softr.app");
         WebDriverRunner.getWebDriver().manage().window().maximize();
     }
-
 
 
 }

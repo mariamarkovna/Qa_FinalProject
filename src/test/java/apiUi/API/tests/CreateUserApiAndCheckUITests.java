@@ -4,14 +4,18 @@ package apiUi.API.tests;
 import apiUi.API.ApiBase;
 import apiUi.API.enums.EndPoint;
 import apiUi.API.model.UserDto;
+import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Description;
 import io.restassured.response.Response;
-import org.junit.Assert;
-import org.junit.Test;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
 import org.testng.annotations.AfterMethod;
 import pages.HeaderMenu;
 import pages.HomePage;
 import pages.SignInPage;
+
+import static com.codeborne.selenide.Selenide.open;
 
 
 public class CreateUserApiAndCheckUITests extends ApiBase {
@@ -38,12 +42,10 @@ public class CreateUserApiAndCheckUITests extends ApiBase {
 
         Assert.assertEquals(response.jsonPath().getString("full_name"), userDto.getFull_name());
         Assert.assertEquals(response.jsonPath().getString("email"), userDto.getEmail());
-        Assert.assertEquals(response.jsonPath().getString("magic_link"), userDto.getMagic_link());
 
         new HeaderMenu().clickSignInBtn();
         new SignInPage().signIn("faker@gmail.com", "123456");
         new HomePage().HPIsShown();
     }
-    // open("https://jere237.softr.app");
-//        WebDriverRunner.getWebDriver().manage().window().maximize();
+
 }

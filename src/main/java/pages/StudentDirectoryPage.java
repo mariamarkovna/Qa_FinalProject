@@ -13,7 +13,7 @@ public class StudentDirectoryPage {
 
     private static By searchField = By.xpath("//input[@id=':r0:']");
     private SelenideElement viewProfileBtn = $x("//a[@type='button']");
-    private SelenideElement studentProfile = $x("//div[@class='list-item-wrapper MuiBox-root css-ga4y95']");
+    private SelenideElement studentProfile = $x("//div[@class='list-item-wrapper MuiBox-root css-mza73d']");
 
     @Step("Appear Student directory")
     public SelenideElement appearStDirectoryPage() {

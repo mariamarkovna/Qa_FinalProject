@@ -11,7 +11,7 @@ public class UserDto {
     private String full_name;
     private String email;
     private String password;
-    private Object generate_magic_link;
-    private Object magic_link;
+    private boolean generate_magic_link;
+
 
 }

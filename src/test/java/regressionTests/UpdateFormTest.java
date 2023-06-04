@@ -16,8 +16,8 @@ public class UpdateFormTest extends BaseTest {
     public Object[][] getUserData() {
         return new Object[][]
                 {
-                        {"malik@example.com", "123456"},
-                        {"roxanne@example.com", "123456"}
+                        {"kali@gmail.com", "12ka34", "Sasha", "sas@gmail.com", "Hi!", "sas.linkedin", "Astrology"},
+                        {"van@gmail.com", "223344", "Picasso", "pic@gmail.com", "Hi", "pic.linkedin"}
                 };
     }
 
@@ -35,26 +35,26 @@ public class UpdateFormTest extends BaseTest {
 
     @Test(dataProvider = "userData", testName = "tc_udp3,tc_udp14: Change all field values in Update profile form.")
     @Description("Change all Field values")
-    public void changeAllFieldValues(String email, String password) {
+    public void changeAllFieldValues(String email, String password, Object[] userData) {
         UpdateProfilePage updateProfilePage = new UpdateProfilePage();
-        updateProfilePage.fillStudUpdateProfileForm("Sasha", "sas@gmail.com", "Hello World!", "Hi! ");
-        updateProfilePage.fillMajor("Astrology");
+        updateProfilePage.fillStudUpdateProfileForm((String) userData[2], (String) userData[3], (String) userData[4], (String) userData[5]);
+        updateProfilePage.fillMajor((String) userData[6]);
         updateProfilePage.changeColorBtn();
 
     }
 
     @Test(dataProvider = "userData", testName = "tc_udp5,tc_udp16: Check Email field values in Update profile form.")
     @Description("Check email field")
-    public void checkEmailField(String email, String password) {
+    public void checkEmailField(String email, String password, Object[] userData) {
         UpdateProfilePage updateProfilePage = new UpdateProfilePage();
         updateProfilePage.verifyUpdateForm();
-        updateProfilePage.fillEmail("kali!12QA@gmail.com");
+        updateProfilePage.fillEmail((String) userData[3]);
         updateProfilePage.changeColorBtn();
     }
 
     @Test(dataProvider = "userData", testName = "tc_udp7,tc_udp18: Add a photo in Avatar image field with Browse button.")
     @Description("Add photo to avatar field")
-    public void addAPhotoAvatarField(String email, String password) {
+    public void addAPhotoAvatarField(String email, String password, Object[] userData) {
         UpdateProfilePage updateProfilePage = new UpdateProfilePage();
         updateProfilePage.chosePhoto();
         updateProfilePage.changeColorBtn();
