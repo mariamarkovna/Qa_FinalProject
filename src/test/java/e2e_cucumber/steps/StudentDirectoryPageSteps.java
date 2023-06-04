@@ -16,9 +16,7 @@ public class StudentDirectoryPageSteps implements En {
 
         When("we see 'Welcome to our student directory'", () -> {
             studentDirectoryPage = page(StudentDirectoryPage.class);
-
             studentDirectoryPage.appearStDirectoryPage().shouldHave(text("Welcome to our"));
-//            $(byText("Welcome to our")).should(exist);
         });
 
         Then("we enter existing name of Student in search field", () -> {
