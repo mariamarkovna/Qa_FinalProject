@@ -1,6 +1,7 @@
 package regressionTests;
 
 import io.qameta.allure.Description;
+import io.qameta.allure.Issue;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
@@ -33,6 +34,7 @@ public class UpdateFormTest extends BaseTest {
 
     }
 
+    @Issue("d_udp3")
     @Test(dataProvider = "userData", testName = "tc_udp3,tc_udp14: Change all field values in Update profile form.")
     @Description("Change all Field values")
     public void changeAllFieldValues(String email, String password, Object[] userData) {
@@ -43,6 +45,7 @@ public class UpdateFormTest extends BaseTest {
 
     }
 
+    @Issue("d_udp3")
     @Test(dataProvider = "userData", testName = "tc_udp5,tc_udp16: Check Email field values in Update profile form.")
     @Description("Check email field")
     public void checkEmailField(String email, String password, Object[] userData) {
@@ -52,6 +55,7 @@ public class UpdateFormTest extends BaseTest {
         updateProfilePage.changeColorBtn();
     }
 
+    @Issue("d_udp5")
     @Test(dataProvider = "userData", testName = "tc_udp7,tc_udp18: Add a photo in Avatar image field with Browse button.")
     @Description("Add photo to avatar field")
     public void addAPhotoAvatarField(String email, String password, Object[] userData) {

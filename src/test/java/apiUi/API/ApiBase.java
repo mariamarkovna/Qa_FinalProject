@@ -4,6 +4,7 @@ import apiUi.API.enums.EndPoint;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import com.github.javafaker.Faker;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
@@ -30,6 +31,7 @@ public class ApiBase {
             .build();
 
     public Response doPostRequest(EndPoint endPoint, int statusCode, Object dto) {
+        RestAssured.filters(new AllureRestAssured());
         Response response = RestAssured.given()
                 .spec(spec)
                 .body(dto)
