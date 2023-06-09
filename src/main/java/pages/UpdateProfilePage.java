@@ -8,9 +8,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class UpdateProfilePage {
-
     private static SelenideElement updateForm = $x("//div[contains(@class,'form-box sw-background-color-ffffff sw-border-style-none sw-border-width-none sw-border-color-eaeced sw-border-radius-2xl sw-box-shadow-none ']");
-
     private static SelenideElement roleInputField = $x("\t//div[@class='filter-option-inner-inner']");
     private static SelenideElement roleForm = $x("//div[@class='dropdown-menu show']");
     private static SelenideElement studentRole = $x("//a[@id='bs-select-1-1']");
@@ -21,7 +19,6 @@ public class UpdateProfilePage {
     private static SelenideElement enternalProfileInputField = $x("//input[@id='sw-form-capture-External Profile URL']");
     private static SelenideElement MajorInputField = $x("//input[@id='sw-form-capture-Major']");
     private static SelenideElement updateProfileBtn = $x("//a[@id='sw-update-profile-btn']");
-
 
     @Step("Update profile form is exist")
     public SelenideElement verifyUpdateForm() {
@@ -35,7 +32,6 @@ public class UpdateProfilePage {
 
     @Step("Chose a role")
     public SelenideElement choseARole() {
-
         $(roleInputField).click();
         verifyRoleForm();
         $(studentRole).click();

@@ -20,18 +20,18 @@ public class UpdateFormTest extends BaseTest {
                         {"kali@gmail.com", "12ka34", "Sasha", "sas@gmail.com", "Hi!", "sas.linkedin", "Astrology"},
                         {"van@gmail.com", "223344", "Picasso", "pic@gmail.com", "Hi", "pic.linkedin"}
                 };
+
+//        public UserDto createUserDto = UserDto.builder()
+//                .email("df")
+//                .password("df")
+//                .build();
     }
 
-
     @BeforeMethod
-
     public void preconditions(Object[] userData) {
-
         new HeaderMenu().clickSignInBtn();
         new SignInPage().signIn((String) userData[0], (String) userData[1]);
-        //
         new HeaderMenuStudent().clickMyProfile();
-
     }
 
     @Issue("d_udp3")
@@ -42,7 +42,6 @@ public class UpdateFormTest extends BaseTest {
         updateProfilePage.fillStudUpdateProfileForm((String) userData[2], (String) userData[3], (String) userData[4], (String) userData[5]);
         updateProfilePage.fillMajor((String) userData[6]);
         updateProfilePage.changeColorBtn();
-
     }
 
     @Issue("d_udp3")
@@ -55,14 +54,13 @@ public class UpdateFormTest extends BaseTest {
         updateProfilePage.changeColorBtn();
     }
 
-    @Issue("d_udp5")
+    @Issue("d_udp4")
     @Test(dataProvider = "userData", testName = "tc_udp7,tc_udp18: Add a photo in Avatar image field with Browse button.")
     @Description("Add photo to avatar field")
     public void addAPhotoAvatarField(String email, String password, Object[] userData) {
         UpdateProfilePage updateProfilePage = new UpdateProfilePage();
         updateProfilePage.chosePhoto();
         updateProfilePage.changeColorBtn();
-
     }
 
     @AfterMethod

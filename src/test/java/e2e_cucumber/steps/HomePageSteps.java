@@ -11,9 +11,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.*;
 
 public class HomePageSteps implements En {
-
     HomePage homePage;
-    //HeaderMenu headerMenu;
     SignInPage signInPage;
     WebDriver driver;
     String baseUrl = "https://jere237.softr.app/";

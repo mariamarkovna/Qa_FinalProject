@@ -8,9 +8,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class StudentDirectoryPage {
-
     private static By wellcomeGreetings = By.xpath("//h1[contains(text(),'Welcome to our')]");
-
     private static By searchField = By.xpath("//input[@id=':r0:']");
     private SelenideElement viewProfileBtn = $x("//a[@type='button']");
     private SelenideElement studentProfile = $x("//div[@class='list-item-wrapper MuiBox-root css-mza73d']");

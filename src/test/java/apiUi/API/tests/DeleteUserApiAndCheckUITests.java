@@ -5,6 +5,7 @@ import apiUi.API.enums.EndPoint;
 import apiUi.API.model.UserDto;
 import io.qameta.allure.Description;
 import io.restassured.response.Response;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.HeaderMenu;
@@ -12,11 +13,9 @@ import pages.SignInPage;
 
 import static com.codeborne.selenide.Condition.text;
 
-
 public class DeleteUserApiAndCheckUITests extends ApiBase {
     UserDto userDto;
     Response response;
-
     String email;
 
     @BeforeMethod
@@ -40,6 +39,5 @@ public class DeleteUserApiAndCheckUITests extends ApiBase {
         SignInPage signInPage = new SignInPage();
         signInPage.signIn("faker@gmail.com", "123456");
         signInPage.confirmErrorMessage().shouldHave(text("Invalid email or password"));
-
     }
 }

@@ -6,12 +6,9 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class UserDto {
     private String full_name;
     private String email;
     private String password;
     private boolean generate_magic_link;
-
-
 }

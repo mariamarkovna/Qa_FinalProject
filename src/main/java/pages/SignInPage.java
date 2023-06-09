@@ -6,9 +6,7 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 
-
 public class SignInPage {
-
     private static By signInForm = By.xpath("//div[@id='signin']");
     private static By emailInput = By.xpath("//*[@id=\"sw-form-capture-email-input\"]");
     private static By passwordInput = By.xpath("//*[@id=\"sw-form-password-input\"]");
@@ -22,7 +20,6 @@ public class SignInPage {
 
     @Step("Enter valid creds of existing User")
     public void validAuth(String email, String password) {
-
         $(emailInput).val(email);
         $(passwordInput).val(password);
     }
@@ -37,13 +34,10 @@ public class SignInPage {
         formIsShown();
         validAuth(email, password);
         clickSignInButn();
-
     }
 
     @Step("Confirmation of the error message")
     public SelenideElement confirmErrorMessage() {
         return $(errorMessage);
     }
-
-
 }

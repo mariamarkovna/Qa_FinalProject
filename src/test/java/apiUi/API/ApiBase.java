@@ -16,12 +16,11 @@ import org.testng.annotations.BeforeMethod;
 import static com.codeborne.selenide.Selenide.open;
 
 public class ApiBase {
-
-
     protected Faker faker = new Faker();
     final String SOFTR_API_KEY = "khIbAyJIU5CIuh1oDuBRx1s49";
     final String BASE_URL = "https://studio-api.softr.io/v1";
-    final String SOFTR_DOMAIN = "jere237.softr.app";
+    //final String SOFTR_DOMAIN = "jere237.softr.app";
+    final String SOFTR_DOMAIN = "erich416.softr.app";
 
     RequestSpecification spec = new RequestSpecBuilder()
             .setBaseUri(BASE_URL)
@@ -64,10 +63,8 @@ public class ApiBase {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--remote-allow-origins=*");
         Configuration.browserCapabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
-
-        open("https://jere237.softr.app");
+        //open("https://jere237.softr.app");
+        open("https://erich416.softr.app");
         WebDriverRunner.getWebDriver().manage().window().maximize();
     }
-
-
 }

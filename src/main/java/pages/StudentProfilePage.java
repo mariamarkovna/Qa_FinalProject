@@ -7,11 +7,8 @@ import org.openqa.selenium.By;
 import static com.codeborne.selenide.Selenide.*;
 
 public class StudentProfilePage {
-
     public HeaderMenuStudent headerMenuStudent = new HeaderMenuStudent();
-
     private static SelenideElement studentName = $x("//h1");
-
     private static SelenideElement studentEmail = $x("//p");
     private static SelenideElement studentRole = $x("/html/body/div[1]/div[2]/section/div/div/div/div/div/div[1]/div[2]/div[3]/div/div/div/span/span");
     private static SelenideElement studentPhoto = $x("/html/body/div[1]/div[2]/section/div/div/div/div/div/div[1]/div[1]/div/div/div/div");

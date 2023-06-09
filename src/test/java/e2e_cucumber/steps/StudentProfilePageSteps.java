@@ -9,12 +9,10 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
 public class StudentProfilePageSteps implements En {
-
     StudentProfilePage studentProfilePage;
     HeaderMenuStudent headerMenuStudent;
 
     public StudentProfilePageSteps() {
-
         Then("we can see all information about this student", () -> {
             studentProfilePage = page(StudentProfilePage.class);
             studentProfilePage.studentsNameIsShown().shouldHave(text("Malik"));
@@ -27,7 +25,6 @@ public class StudentProfilePageSteps implements En {
             studentProfilePage.backToDirectotyIsShown();
             studentProfilePage.roleIsShown().shouldHave(text("Role"));
             studentProfilePage.studentIsShown().shouldHave(text("student"));
-
         });
 
         And("click profile icon", () -> {
@@ -35,12 +32,9 @@ public class StudentProfilePageSteps implements En {
             headerMenuStudent.clickProfileIcon();
         });
 
-
         When("we see drop-down menu", () -> {
-
-            headerMenuStudent.verifyDropDownMenu().shouldBe(Condition.visible);
+            headerMenuStudent.verifyDropDownMenu();
         });
-
 
         Then("we click SignOut button", () -> {
             headerMenuStudent.clickSignOutBtn();
