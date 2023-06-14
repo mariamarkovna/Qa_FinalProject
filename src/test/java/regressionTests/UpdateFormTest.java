@@ -70,7 +70,6 @@ public class UpdateFormTest extends BaseTest {
     public void tearDown() {
         HeaderMenuStudent headerMenuStudent = new HeaderMenuStudent();
         headerMenuStudent.clickSignOut();
-
     }
 }
 
