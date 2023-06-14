@@ -1,11 +1,13 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
+import static java.lang.Thread.sleep;
 
 public class UpdateProfilePage {
     private static SelenideElement updateForm = $x("//div[contains(@class,'form-box sw-background-color-ffffff sw-border-style-none sw-border-width-none sw-border-color-eaeced sw-border-radius-2xl sw-box-shadow-none ']");
@@ -70,6 +72,8 @@ public class UpdateProfilePage {
     @Step("Click Update profile button")
     public void clickUpdateProfileBtn() {
         $(updateProfileBtn).click();
+        Selenide.sleep(10000);
+
     }
 
     @Step("Check Update profile")
@@ -77,6 +81,14 @@ public class UpdateProfilePage {
         SelenideElement button = $(updateProfileBtn);
         String colorOfButton = button.getCssValue("background-color:#2c2921");
         clickUpdateProfileBtn();
+        Selenide.sleep(5000);
         button.shouldNotHave(Condition.attribute("background-color:#2c2921", colorOfButton));
+        button.shouldHave(Condition.attribute("background-color:#2c2921", colorOfButton));
     }
+
+    public void pause() throws InterruptedException {
+        sleep(2000);
+    }
+
+
 }

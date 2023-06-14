@@ -41,7 +41,8 @@ public class UpdateFormTest extends BaseTest {
         UpdateProfilePage updateProfilePage = new UpdateProfilePage();
         updateProfilePage.fillStudUpdateProfileForm((String) userData[2], (String) userData[3], (String) userData[4], (String) userData[5]);
         updateProfilePage.fillMajor((String) userData[6]);
-        updateProfilePage.changeColorBtn();
+        //updateProfilePage.changeColorBtn();
+        updateProfilePage.clickUpdateProfileBtn();
     }
 
     @Issue("d_udp3")
@@ -50,8 +51,9 @@ public class UpdateFormTest extends BaseTest {
     public void checkEmailField(String email, String password, Object[] userData) {
         UpdateProfilePage updateProfilePage = new UpdateProfilePage();
         updateProfilePage.verifyUpdateForm();
-        updateProfilePage.fillEmail((String) userData[3]);
-        updateProfilePage.changeColorBtn();
+        updateProfilePage.fillEmail((String) userData[1]);
+        //updateProfilePage.changeColorBtn();
+        updateProfilePage.clickUpdateProfileBtn();
     }
 
     @Issue("d_udp4")
@@ -60,13 +62,15 @@ public class UpdateFormTest extends BaseTest {
     public void addAPhotoAvatarField(String email, String password, Object[] userData) {
         UpdateProfilePage updateProfilePage = new UpdateProfilePage();
         updateProfilePage.chosePhoto();
-        updateProfilePage.changeColorBtn();
+        //updateProfilePage.changeColorBtn();
+        updateProfilePage.clickUpdateProfileBtn();
     }
 
     @AfterMethod
     public void tearDown() {
         HeaderMenuStudent headerMenuStudent = new HeaderMenuStudent();
         headerMenuStudent.clickSignOut();
+
     }
 }
 

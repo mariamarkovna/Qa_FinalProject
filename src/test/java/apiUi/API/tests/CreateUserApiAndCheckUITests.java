@@ -45,7 +45,8 @@ public class CreateUserApiAndCheckUITests extends ApiBase {
 
         new HeaderMenu().clickSignInBtn();
         new SignInPage().signIn("aker@gmail.com", "123456");
-        new HomePageUser().getUsersHomePageElement().shouldHave(text("Welcome to NoCode University's Student Portal"));
+        new HomePageUser().getUsersHomePageElement().shouldHave(text("NoCode University at a glance"));
+
     }
 
 }
