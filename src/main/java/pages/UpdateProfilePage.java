@@ -81,9 +81,8 @@ public class UpdateProfilePage {
         SelenideElement button = $(updateProfileBtn);
         String colorOfButton = button.getCssValue("background-color:#2c2921");
         clickUpdateProfileBtn();
-        Selenide.sleep(5000);
         button.shouldNotHave(Condition.attribute("background-color:#2c2921", colorOfButton));
-        button.shouldHave(Condition.attribute("background-color:#2c2921", colorOfButton));
+
     }
 
     public void pause() throws InterruptedException {

@@ -2,14 +2,15 @@ package regressionTests;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Issue;
+import org.openqa.selenium.By;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pages.HeaderMenu;
-import pages.HeaderMenuStudent;
-import pages.SignInPage;
-import pages.UpdateProfilePage;
+import pages.*;
+
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$x;
 
 public class UpdateFormTest extends BaseTest {
 
@@ -17,8 +18,8 @@ public class UpdateFormTest extends BaseTest {
     public Object[][] getUserData() {
         return new Object[][]
                 {
-                        {"kali@gmail.com", "12ka34", "Sasha", "sas@gmail.com", "Hi!", "sas.linkedin", "Astrology"},
-                        {"van@gmail.com", "223344", "Picasso", "pic@gmail.com", "Hi", "pic.linkedin"}
+                        {"kali@gmail.com", "12ka34", "Sasha", "sas@gmail.com", "Hi!", "sas.linkedin", "Astrology", "Kali"},
+                        {"van@gmail.com", "223344", "Picasso", "pic@gmail.com", "Hi", "pic.linkedin", " ", "Van"}
                 };
 
 //        public UserDto createUserDto = UserDto.builder()
@@ -39,9 +40,8 @@ public class UpdateFormTest extends BaseTest {
     @Description("Change all Field values")
     public void changeAllFieldValues(String email, String password, Object[] userData) {
         UpdateProfilePage updateProfilePage = new UpdateProfilePage();
-        updateProfilePage.fillStudUpdateProfileForm((String) userData[2], (String) userData[3], (String) userData[4], (String) userData[5]);
-        updateProfilePage.fillMajor((String) userData[6]);
-        //updateProfilePage.changeColorBtn();
+        updateProfilePage.fillStudUpdateProfileForm((String) userData[0], (String) userData[1], (String) userData[2], (String) userData[3]);
+        updateProfilePage.fillMajor((String) userData[4]);
         updateProfilePage.clickUpdateProfileBtn();
     }
 
@@ -52,7 +52,6 @@ public class UpdateFormTest extends BaseTest {
         UpdateProfilePage updateProfilePage = new UpdateProfilePage();
         updateProfilePage.verifyUpdateForm();
         updateProfilePage.fillEmail((String) userData[1]);
-        //updateProfilePage.changeColorBtn();
         updateProfilePage.clickUpdateProfileBtn();
     }
 
@@ -62,8 +61,19 @@ public class UpdateFormTest extends BaseTest {
     public void addAPhotoAvatarField(String email, String password, Object[] userData) {
         UpdateProfilePage updateProfilePage = new UpdateProfilePage();
         updateProfilePage.chosePhoto();
-        //updateProfilePage.changeColorBtn();
         updateProfilePage.clickUpdateProfileBtn();
+
+        HeaderMenuStudent headerMenuStudent = new HeaderMenuStudent();
+        headerMenuStudent.clickStudentDirectoryBtn();
+
+        StudentDirectoryPage studentDirectoryPage = new StudentDirectoryPage();
+        studentDirectoryPage.appearStDirectoryPage();
+        studentDirectoryPage.enterAStudentName((String) userData[5]);
+        studentDirectoryPage.choseStudentOfList(studentDirectoryPage.studentProfileKali);
+        studentDirectoryPage.clickViewProfileBtn();
+
+        StudentProfilePage studentProfilePage = new StudentProfilePage();
+        studentProfilePage.imageChanged();
     }
 
     @AfterMethod
@@ -72,4 +82,18 @@ public class UpdateFormTest extends BaseTest {
         headerMenuStudent.clickSignOut();
     }
 }
+
+//    @DataProvider(name = "credentials")
+//    public Object[][] getCredentials() {
+//        return new Object[][]
+//                {
+//                        {"kali@gmail.com", "12ka34"},
+//                        {"van@gmail.com", "223344"}
+//                };
+//    }
+//    Starta Institute 24 10:28
+//public UserDto createUserDto = UserDto.builder()
+////                .email("df")
+////                .password("df")
+////                .build();
 

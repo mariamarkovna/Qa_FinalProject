@@ -12,6 +12,7 @@ public class HeaderMenuStudent {
     private static SelenideElement myProfileBtn = $x("/html/body/div[1]/div[1]/div/div[3]/ul/a[1]");
     private static SelenideElement menuProfile = $x("//ul[@class='MuiList-root MuiList-padding MuiMenu-list css-r8u8y9']");
     private static SelenideElement signOutBtn = $x("/html/body/div[1]/div[1]/div/div[3]/ul/a[2]");
+    private static SelenideElement professors = $x("//span[contains(text(),'Professors')]");
 
     @Step("User is logged")
     public void verifyAuthIcon() {
@@ -57,5 +58,10 @@ public class HeaderMenuStudent {
         clickProfileIcon();
         verifyDropDownMenu();
         clickSignOutBtn();
+    }
+
+    @Step("Click Profeesors button")
+    public void clickProfessorsBtn() {
+        $(professors).click();
     }
 }

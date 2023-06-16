@@ -21,7 +21,7 @@ public class StudentDirectoryPageSteps implements En {
         });
 
         And("we see profile of this student", () -> {
-            studentDirectoryPage.choseStudentOfList();
+            studentDirectoryPage.choseStudentOfList(studentDirectoryPage.studentProfile);
         });
 
         When("we press View Profile button", () -> {
