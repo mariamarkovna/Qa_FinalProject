@@ -7,17 +7,16 @@ import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
-import static java.lang.Thread.sleep;
 
 public class UpdateProfilePage {
     private static SelenideElement updateForm = $x("//div[contains(@class,'form-box sw-background-color-ffffff sw-border-style-none sw-border-width-none sw-border-color-eaeced sw-border-radius-2xl sw-box-shadow-none ']");
-    private static SelenideElement roleInputField = $x("\t//div[@class='filter-option-inner-inner']");
+    private static SelenideElement roleInputField = $x("//div[@class='filter-option-inner-inner']");
     private static SelenideElement roleForm = $x("//div[@class='dropdown-menu show']");
     private static SelenideElement studentRole = $x("//a[@id='bs-select-1-1']");
     private static SelenideElement teacherRole = $x("//a[@id='bs-select-1-0']");
     private static SelenideElement fullNameInputField = $x("//input[@id='sw-form-capture-full_name-input']");
     private static SelenideElement emailInputField = $x("//input[@id='sw-form-capture-email-input']");
-    private static SelenideElement aboutMeInputField = $x("\t//textarea[@id='sw-form-capture-About']");
+    private static SelenideElement aboutMeInputField = $x("//textarea[@id='sw-form-capture-About']");
     private static SelenideElement avatarImageInputField = $x("//input[@type='file']");
     private static SelenideElement enternalProfileInputField = $x("//input[@id='sw-form-capture-External Profile URL']");
     private static SelenideElement MajorInputField = $x("//input[@id='sw-form-capture-Major']");
@@ -33,7 +32,7 @@ public class UpdateProfilePage {
         return $(roleForm);
     }
 
-    @Step("Chose a role")
+    @Step("Chose a student role")
     public SelenideElement choseAStudentRole() {
         $(roleInputField).click();
         verifyRoleForm();
@@ -41,7 +40,7 @@ public class UpdateProfilePage {
         return null;
     }
 
-    @Step("Chose a role")
+    @Step("Chose a teacher role")
     public SelenideElement choseATeacherRole() {
         $(roleInputField).click();
         verifyRoleForm();
@@ -91,12 +90,5 @@ public class UpdateProfilePage {
         String colorOfButton = button.getCssValue("background-color:#2c2921");
         clickUpdateProfileBtn();
         button.shouldNotHave(Condition.attribute("background-color:#2c2921", colorOfButton));
-
     }
-
-    public void pause() throws InterruptedException {
-        sleep(2000);
-    }
-
-
 }

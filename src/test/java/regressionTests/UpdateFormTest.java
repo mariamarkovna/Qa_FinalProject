@@ -10,7 +10,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.*;
 
-
 public class UpdateFormTest extends BaseTest {
 
     public User student = User.builder()
@@ -36,10 +35,9 @@ public class UpdateFormTest extends BaseTest {
         return new Object[][]{
                 {student, "student"},
                 {teacher, "teacher"},
-
         };
     }
-    
+
     @BeforeMethod
     public void preconditions() {
         new HeaderMenu().clickSignInBtn();

@@ -5,13 +5,9 @@ import apiUi.API.enums.EndPoint;
 import apiUi.API.model.UserDto;
 import io.qameta.allure.Description;
 import io.restassured.response.Response;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pages.HeaderMenu;
-import pages.SignInPage;
 
-import static com.codeborne.selenide.Condition.text;
 import static model.Helper.checkDeletedUserViaUI;
 
 public class DeleteUserApiAndCheckUITests extends ApiBase {
@@ -35,7 +31,6 @@ public class DeleteUserApiAndCheckUITests extends ApiBase {
     @Description("Checking deleted user via API")
     public void deleteUserAndCheckUITest() {
         doDeleteRequest(EndPoint.DELETE_USER, 200, email);
-
         checkDeletedUserViaUI();
     }
 }

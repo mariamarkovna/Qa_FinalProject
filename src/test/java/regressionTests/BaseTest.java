@@ -16,7 +16,6 @@ public class BaseTest {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--remote-allow-origins=*");
         Configuration.browserCapabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
-        //open("https://jere237.softr.app");
         open("https://erich416.softr.app");
         WebDriverRunner.getWebDriver().manage().window().maximize();
     }

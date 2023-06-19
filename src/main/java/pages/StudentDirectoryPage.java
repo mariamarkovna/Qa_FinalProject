@@ -26,8 +26,6 @@ public class StudentDirectoryPage {
     }
 
     @Step("Chose a Student of List")
-//    public void choseStudentOfList() {
-//        $(studentProfile).click();/    }
     public void choseStudentOfList(SelenideElement element) {
         element.click();
     }

@@ -9,5 +9,4 @@ public enum EndPoint {
     CREATE_USER("/api/users"),
     DELETE_USER("/api/users/{email}");
     private final String value;
-
 }

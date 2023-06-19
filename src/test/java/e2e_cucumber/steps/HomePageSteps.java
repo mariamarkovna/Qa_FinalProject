@@ -14,7 +14,7 @@ public class HomePageSteps implements En {
     HomePage homePage;
     SignInPage signInPage;
     WebDriver driver;
-    String baseUrl = "https://jere237.softr.app/";
+    String baseUrl = "https://erich416.softr.app";
 
     public HomePageSteps() {
         Given("that we navigate to home page", () -> {

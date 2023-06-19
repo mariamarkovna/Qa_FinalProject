@@ -40,6 +40,4 @@ public class HomePage {
     public void clickOfTeacherProfileBtn() {
         teacherViewProfileBtn.click();
     }
-
-
 }
