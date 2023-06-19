@@ -37,28 +37,12 @@ public class UpdateFormTest extends BaseTest {
                 {student, "student"},
                 {teacher, "teacher"},
 
-//
-//                {"kali@gmail.com", "12ka34", "Sasha", "sas@gmail.com", "Hi!", "sas.linkedin", "Astrology", "Kali"},
-//                {"van@gmail.com", "223344", "Picasso", "pic@gmail.com", "Hi", "pic.linkedin", " ", "Van"}
-
-
         };
     }
-
-
-//
-
-
+    
     @BeforeMethod
-//    public void preconditions(Object[] userData) {
-//        new HeaderMenu().clickSignInBtn();
-//        new SignInPage().signIn((String) userData[0], (String) userData[1]);
-//        new HeaderMenuStudent().clickMyProfile();
-//    }
-
     public void preconditions() {
         new HeaderMenu().clickSignInBtn();
-
     }
 
     @Issue("d_udp3")
@@ -71,7 +55,6 @@ public class UpdateFormTest extends BaseTest {
         updateProfilePage.fillStudUpdateProfileForm(userData.getNewFull_name(), userData.getEmail(), userData.getAboutMe(), userData.getExternalProfile());
         updateProfilePage.fillMajor(userData.getMajor());
         updateProfilePage.clickUpdateProfileBtn();
-
         Helper helper = new Helper();
         helper.goToProfileCheckAllFields(role);
     }
@@ -86,7 +69,6 @@ public class UpdateFormTest extends BaseTest {
         updateProfilePage.verifyUpdateForm();
         updateProfilePage.fillEmail(userData.getEmail());
         updateProfilePage.clickUpdateProfileBtn();
-
         Helper helper = new Helper();
         helper.goToProfileCheckEmail(role);
     }
@@ -100,7 +82,6 @@ public class UpdateFormTest extends BaseTest {
         UpdateProfilePage updateProfilePage = new UpdateProfilePage();
         updateProfilePage.chosePhoto();
         updateProfilePage.clickUpdateProfileBtn();
-
         Helper helper = new Helper();
         helper.goToProfileCheckAvatar(role);
     }

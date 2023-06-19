@@ -9,12 +9,8 @@ import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.annotations.AfterMethod;
-import pages.HeaderMenu;
-import pages.HomePage;
-import pages.HomePageUser;
-import pages.SignInPage;
 
-import static com.codeborne.selenide.Condition.text;
+import static model.Helper.checkCreatedUserViaUI;
 
 public class CreateUserApiAndCheckUITests extends ApiBase {
     UserDto userDto;
@@ -22,8 +18,6 @@ public class CreateUserApiAndCheckUITests extends ApiBase {
     String email;
 
     @AfterMethod
-
-
     public void afterMethod() {
         doDeleteRequest(EndPoint.DELETE_USER, 200, email);
     }
@@ -43,10 +37,6 @@ public class CreateUserApiAndCheckUITests extends ApiBase {
         Assert.assertEquals(response.jsonPath().getString("full_name"), userDto.getFull_name());
         Assert.assertEquals(response.jsonPath().getString("email"), userDto.getEmail());
 
-        new HeaderMenu().clickSignInBtn();
-        new SignInPage().signIn("faker@gmail.com", "123456");
-        new HomePageUser().getUsersHomePageElement().shouldHave(text("NoCode University at a glance"));
-
+        checkCreatedUserViaUI();
     }
-
 }

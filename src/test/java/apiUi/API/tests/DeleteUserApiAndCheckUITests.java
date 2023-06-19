@@ -12,6 +12,7 @@ import pages.HeaderMenu;
 import pages.SignInPage;
 
 import static com.codeborne.selenide.Condition.text;
+import static model.Helper.checkDeletedUserViaUI;
 
 public class DeleteUserApiAndCheckUITests extends ApiBase {
     UserDto userDto;
@@ -35,9 +36,6 @@ public class DeleteUserApiAndCheckUITests extends ApiBase {
     public void deleteUserAndCheckUITest() {
         doDeleteRequest(EndPoint.DELETE_USER, 200, email);
 
-        new HeaderMenu().clickSignInBtn();
-        SignInPage signInPage = new SignInPage();
-        signInPage.signIn("faker@gmail.com", "123456");
-        signInPage.confirmErrorMessage().shouldHave(text("Invalid email or password"));
+        checkDeletedUserViaUI();
     }
 }
