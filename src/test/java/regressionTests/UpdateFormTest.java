@@ -64,12 +64,6 @@ public class UpdateFormTest extends BaseTest {
     @Issue("d_udp3")
     @Test(dataProvider = "userData", testName = "tc_udp3,tc_udp14: Change all field values in Update profile form.")
     @Description("Change all Field values")
-//    public void changeAllFieldValues(String email, String password, Object[] userData) {
-//        UpdateProfilePage updateProfilePage = new UpdateProfilePage();
-//        updateProfilePage.fillStudUpdateProfileForm((String) userData[0], (String) userData[1], (String) userData[2], (String) userData[3]);
-//        updateProfilePage.fillMajor((String) userData[4]);
-//        updateProfilePage.clickUpdateProfileBtn();
-//    }
     public void changeAllFieldValues(User userData, String role) {
         new SignInPage().signIn(userData.getEmail(), userData.getPassword());
         new HeaderMenuStudent().clickMyProfile();
@@ -79,19 +73,12 @@ public class UpdateFormTest extends BaseTest {
         updateProfilePage.clickUpdateProfileBtn();
 
         Helper helper = new Helper();
-        helper.goToProfile(role);
-        helper.checkInfoStudent();
+        helper.goToProfileCheckAllFields(role);
     }
 
     @Issue("d_udp3")
     @Test(dataProvider = "userData", testName = "tc_udp5,tc_udp16: Check Email field values in Update profile form.")
     @Description("Check email field")
-//    public void checkEmailField(String email, String password, Object[] userData) {
-//        UpdateProfilePage updateProfilePage = new UpdateProfilePage();
-//        updateProfilePage.verifyUpdateForm();
-//        updateProfilePage.fillEmail((String) userData[1]);
-//        updateProfilePage.clickUpdateProfileBtn();
-//    }
     public void checkEmailField(User userData, String role) {
         new SignInPage().signIn(userData.getEmail(), userData.getPassword());
         new HeaderMenuStudent().clickMyProfile();
@@ -101,6 +88,7 @@ public class UpdateFormTest extends BaseTest {
         updateProfilePage.clickUpdateProfileBtn();
 
         Helper helper = new Helper();
+        helper.goToProfileCheckEmail(role);
     }
 
     @Issue("d_udp4")
@@ -114,7 +102,7 @@ public class UpdateFormTest extends BaseTest {
         updateProfilePage.clickUpdateProfileBtn();
 
         Helper helper = new Helper();
-        helper.goToProfile(role);
+        helper.goToProfileCheckAvatar(role);
     }
 
     @AfterMethod

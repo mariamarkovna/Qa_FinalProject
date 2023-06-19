@@ -8,9 +8,16 @@ import static com.codeborne.selenide.Selenide.$x;
 
 public class ProfessorProfilePage {
     private static SelenideElement professorProfilePageElement = $x("//h2[@class='sw-font-size-3xl sw-text-color-default sw-font-family-default sw-font-weight-default sw-padding-top-none sw-padding-bottom-6xs sw-letter-spacing-normal sw-line-height-normal']");
+    private static SelenideElement professorEmail = $x("//span[@style='font-size: 1rem; color: rgb(1, 70, 177);']");
 
     public SelenideElement professorProfileIsShow() {
         return $(professorProfilePageElement);
+    }
+
+    @Step()
+    public SelenideElement teacherEmail() {
+
+        return $(professorEmail);
     }
 
     @Step("Image of teacher avatar changed")
