@@ -33,7 +33,7 @@ public class CreateUserApiAndCheckUITests extends ApiBase {
     public void createUserApiAndCheckUITests() {
         userDto = new UserDto();
         userDto.setFull_name(faker.name().fullName());
-        userDto.setEmail("aker@gmail.com");
+        userDto.setEmail("faker@gmail.com");
         userDto.setPassword("123456");
         userDto.setGenerate_magic_link(false);
 
@@ -44,7 +44,7 @@ public class CreateUserApiAndCheckUITests extends ApiBase {
         Assert.assertEquals(response.jsonPath().getString("email"), userDto.getEmail());
 
         new HeaderMenu().clickSignInBtn();
-        new SignInPage().signIn("aker@gmail.com", "123456");
+        new SignInPage().signIn("faker@gmail.com", "123456");
         new HomePageUser().getUsersHomePageElement().shouldHave(text("NoCode University at a glance"));
 
     }

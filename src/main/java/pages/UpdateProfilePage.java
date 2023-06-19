@@ -14,6 +14,7 @@ public class UpdateProfilePage {
     private static SelenideElement roleInputField = $x("\t//div[@class='filter-option-inner-inner']");
     private static SelenideElement roleForm = $x("//div[@class='dropdown-menu show']");
     private static SelenideElement studentRole = $x("//a[@id='bs-select-1-1']");
+    private static SelenideElement teacherRole = $x("//a[@id='bs-select-1-0']");
     private static SelenideElement fullNameInputField = $x("//input[@id='sw-form-capture-full_name-input']");
     private static SelenideElement emailInputField = $x("//input[@id='sw-form-capture-email-input']");
     private static SelenideElement aboutMeInputField = $x("\t//textarea[@id='sw-form-capture-About']");
@@ -33,16 +34,24 @@ public class UpdateProfilePage {
     }
 
     @Step("Chose a role")
-    public SelenideElement choseARole() {
+    public SelenideElement choseAStudentRole() {
         $(roleInputField).click();
         verifyRoleForm();
         $(studentRole).click();
         return null;
     }
 
+    @Step("Chose a role")
+    public SelenideElement choseATeacherRole() {
+        $(roleInputField).click();
+        verifyRoleForm();
+        $(teacherRole).click();
+        return null;
+    }
+
     @Step("fill student Update Profile form ")
     public void fillStudUpdateProfileForm(String fullName, String email, String aboutMe, String enternalProfile) {
-        choseARole();
+        choseAStudentRole();
         $(fullNameInputField).val(fullName);
         fillEmail(email);
         $(aboutMeInputField).val(aboutMe);

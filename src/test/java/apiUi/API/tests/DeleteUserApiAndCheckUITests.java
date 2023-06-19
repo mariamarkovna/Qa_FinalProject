@@ -22,7 +22,7 @@ public class DeleteUserApiAndCheckUITests extends ApiBase {
     public void precondition() {
         userDto = new UserDto();
         userDto.setFull_name(faker.name().fullName());
-        userDto.setEmail("aker@gmail.com");
+        userDto.setEmail("faker@gmail.com");
         userDto.setPassword("123456");
         userDto.setGenerate_magic_link(false);
 
@@ -37,7 +37,7 @@ public class DeleteUserApiAndCheckUITests extends ApiBase {
 
         new HeaderMenu().clickSignInBtn();
         SignInPage signInPage = new SignInPage();
-        signInPage.signIn("aker@gmail.com", "123456");
+        signInPage.signIn("faker@gmail.com", "123456");
         signInPage.confirmErrorMessage().shouldHave(text("Invalid email or password"));
     }
 }
