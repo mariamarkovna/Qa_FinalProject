@@ -54,7 +54,7 @@ public class UpdateFormTest extends BaseTest {
         updateProfilePage.fillMajor(userData.getMajor());
         updateProfilePage.clickUpdateProfileBtn();
         Helper helper = new Helper();
-        helper.goToProfileCheckAllFields(role);
+        helper.goToProfileCheckAllFields(role, userData);
     }
 
     @Issue("d_udp3")
@@ -68,7 +68,7 @@ public class UpdateFormTest extends BaseTest {
         updateProfilePage.fillEmail(userData.getEmail());
         updateProfilePage.clickUpdateProfileBtn();
         Helper helper = new Helper();
-        helper.goToProfileCheckEmail(role);
+        helper.goToProfileCheckEmail(role, userData);
     }
 
     @Issue("d_udp4")

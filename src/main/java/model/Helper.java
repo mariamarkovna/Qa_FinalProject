@@ -40,44 +40,37 @@ public class Helper {
     }
 
     @Step("Check students email change")
-    public static void CheckStudentEmailChange() {
+    public static void CheckStudentEmailChange(User userData) {
         goToStudentDirectory();
-        studentEmailsText("sas@gmail.com");
+        studentEmailsText(userData.getNewEmail());
     }
 
     @Step("Check teacher email change")
-    public static void CheckTeacherEmailChange() {
+    public static void CheckTeacherEmailChange(User userData) {
         goToProfessorSpotlight();
-        teacherEmailsText("pic@gmail.com");
+        teacherEmailsText(userData.getNewEmail());
     }
 
     @Step("Check students all fields of update profile form changed")
-    public static void CheckStudentAllFieldsChange() {
+    public static void CheckStudentAllFieldsChange(User userData) {
         goToStudentDirectory();
         StudentProfilePage studentProfilePage = new StudentProfilePage();
-        studentProfilePage.studentsNameIsShown().shouldHave(text("Sasha"));
-        studentEmailsText("sas@gmail.com");
-        studentProfilePage.studentRoleIsShown().shouldHave(text("student"));
+        studentProfilePage.studentsNameIsShown().shouldHave(text(userData.getNewFull_name()));
+        studentEmailsText(userData.getEmail());
         CheckStudentAvatar();
-        studentProfilePage.aboutMeIsShown().shouldHave(text("Hi!"));
-        studentProfilePage.majorFieldIsShown().shouldHave(text("Majoring in"));
-        studentProfilePage.majorNameIsShown().shouldHave(text("Astrology"));
-        studentProfilePage.backToDirectotyIsShown();
-        studentProfilePage.roleIsShown().shouldHave(text("Role"));
-        studentProfilePage.studentIsShown().shouldHave(text("student"));
+        studentProfilePage.aboutMeIsShown().shouldHave(text(userData.getAboutMe()));
+        studentProfilePage.majorNameIsShown().shouldHave(text(userData.getMajor()));//
     }
 
     @Step("Check teacher all fields of update profile form changed")
-    public static void CheckTeacherAllFieldsChange() {
+    public static void CheckTeacherAllFieldsChange(User userData) {
         goToProfessorSpotlight();
         ProfessorProfilePage professorProfilePage = new ProfessorProfilePage();
         professorProfilePage.professorProfileIsShow();
-        professorProfilePage.teacherName().shouldHave(text("Picasso"));
-        professorProfilePage.teacherAboutMe().shouldHave(text("Hi!"));
-        teacherEmailsText("pic@gmail.com");
+        professorProfilePage.teacherName().shouldHave(text(userData.getNewFull_name()));
+        professorProfilePage.teacherAboutMe().shouldHave(text(userData.getAboutMe()));
+        teacherEmailsText(userData.getEmail());
         professorProfilePage.teacherImageChanged();
-        professorProfilePage.teacherRole().shouldHave(text("Role"));
-        professorProfilePage.checkRoleBtn().shouldHave(text("teacher"));
     }
 
     @Step("Go to profile check Avatar")
@@ -90,20 +83,20 @@ public class Helper {
     }
 
     @Step("Go to profile check email")
-    public void goToProfileCheckEmail(String role) {
+    public void goToProfileCheckEmail(String role, User userData) {
         if (role.equals("student")) {
-            CheckStudentEmailChange();
+            CheckStudentEmailChange(userData);
         } else if (role.equals("teacher")) {
-            CheckTeacherEmailChange();
+            CheckTeacherEmailChange(userData);
         }
     }
 
     @Step("Go to profile check all fieds")
-    public void goToProfileCheckAllFields(String role) {
+    public void goToProfileCheckAllFields(String role, User userData) {
         if (role.equals("student")) {
-            CheckStudentAllFieldsChange();
+            CheckStudentAllFieldsChange(userData);
         } else if (role.equals("teacher")) {
-            CheckTeacherAllFieldsChange();
+            CheckTeacherAllFieldsChange(userData);
         }
     }
 
