@@ -26,9 +26,9 @@ public class HomePage {
     }
 
     @Step("Enter a Teacher name")
-    public void enterATeacherName(String teachertName) {
+    public void enterATeacherName(String teachersName) {
 
-        $(searchTeacherField).val(teachertName);
+        $(searchTeacherField).val(teachersName);
     }
 
     @Step("Chose a Teacher of List")

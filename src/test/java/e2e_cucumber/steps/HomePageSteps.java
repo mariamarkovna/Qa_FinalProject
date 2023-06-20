@@ -28,7 +28,7 @@ public class HomePageSteps implements En {
             homePage.headerMenu.clickSignInBtn();
         });
 
-        Then("we see a SignIn form", () -> {
+        When("we see a SignIn form", () -> {
             signInPage = page(SignInPage.class);
             signInPage.formIsShown().shouldHave(text("Use the"));
         });

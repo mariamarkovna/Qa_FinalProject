@@ -12,7 +12,7 @@ public class SignInPageSteps implements En {
     WebDriver driver;
 
     public SignInPageSteps() {
-        When("we enter valid creds of existing user", () -> {
+        Then("we enter valid creds of existing user", () -> {
             signInPage = page(SignInPage.class);
             signInPage.validAuth("malik@example.com", "123456");
         });
@@ -21,7 +21,7 @@ public class SignInPageSteps implements En {
             signInPage.clickSignInButn();
         });
 
-        And("we moved on SingIn Page", () -> {
+        Then("we moved on SingIn Page", () -> {
             signInPage.formIsShown().shouldHave(text("Use the"));
         });
     }

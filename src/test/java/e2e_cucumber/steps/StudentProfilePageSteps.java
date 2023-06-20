@@ -1,7 +1,6 @@
 package e2e_cucumber.steps;
 
-import com.codeborne.selenide.Condition;
-import pages.HeaderMenuStudent;
+import pages.HeaderMenuUser;
 import pages.StudentProfilePage;
 import io.cucumber.java8.En;
 
@@ -10,7 +9,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class StudentProfilePageSteps implements En {
     StudentProfilePage studentProfilePage;
-    HeaderMenuStudent headerMenuStudent;
+    HeaderMenuUser headerMenuStudent;
 
     public StudentProfilePageSteps() {
         Then("we can see all information about this student", () -> {
@@ -28,7 +27,7 @@ public class StudentProfilePageSteps implements En {
         });
 
         And("click profile icon", () -> {
-            headerMenuStudent = page(HeaderMenuStudent.class);
+            headerMenuStudent = page(HeaderMenuUser.class);
             headerMenuStudent.clickProfileIcon();
         });
 

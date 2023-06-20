@@ -40,53 +40,46 @@ public class UpdateFormTest extends BaseTest {
 
     @BeforeMethod
     public void preconditions() {
-        new HeaderMenu().clickSignInBtn();
+        headerMenu.clickSignInBtn();
     }
 
     @Issue("d_udp3")
     @Test(dataProvider = "userData", testName = "tc_udp3,tc_udp14: Change all field values in Update profile form.")
     @Description("Change all Field values")
     public void changeAllFieldValues(User userData, String role) {
-        new SignInPage().signIn(userData.getEmail(), userData.getPassword());
-        new HeaderMenuStudent().clickMyProfile();
-        UpdateProfilePage updateProfilePage = new UpdateProfilePage();
+        signInPage.signIn(userData.getEmail(), userData.getPassword());
+        headerMenuUser.clickMyProfile();
         updateProfilePage.fillStudUpdateProfileForm(userData.getNewFull_name(), userData.getEmail(), userData.getAboutMe(), userData.getExternalProfile());
         updateProfilePage.fillMajor(userData.getMajor());
         updateProfilePage.clickUpdateProfileBtn();
-        Helper helper = new Helper();
-        helper.goToProfileCheckAllFields(role, userData);
+        helper.goToProfileCheckAllFields(role, userData, "Sasha", "Picasso");
     }
 
     @Issue("d_udp3")
     @Test(dataProvider = "userData", testName = "tc_udp5,tc_udp16: Check Email field values in Update profile form.")
     @Description("Check email field")
     public void checkEmailField(User userData, String role) {
-        new SignInPage().signIn(userData.getEmail(), userData.getPassword());
-        new HeaderMenuStudent().clickMyProfile();
-        UpdateProfilePage updateProfilePage = new UpdateProfilePage();
+        signInPage.signIn(userData.getEmail(), userData.getPassword());
+        headerMenuUser.clickMyProfile();
         updateProfilePage.verifyUpdateForm();
         updateProfilePage.fillEmail(userData.getEmail());
         updateProfilePage.clickUpdateProfileBtn();
-        Helper helper = new Helper();
-        helper.goToProfileCheckEmail(role, userData);
+        helper.goToProfileCheckEmail(role, userData, "Kali", "Van");
     }
 
     @Issue("d_udp4")
     @Test(dataProvider = "userData", testName = "tc_udp7,tc_udp18: Add a photo in Avatar image field with Browse button.")
     @Description("Add photo to avatar field")
     public void addAPhotoAvatarField(User userData, String role) {
-        new SignInPage().signIn(userData.getEmail(), userData.getPassword());
-        new HeaderMenuStudent().clickMyProfile();
-        UpdateProfilePage updateProfilePage = new UpdateProfilePage();
+        signInPage.signIn(userData.getEmail(), userData.getPassword());
+        headerMenuUser.clickMyProfile();
         updateProfilePage.chosePhoto();
         updateProfilePage.clickUpdateProfileBtn();
-        Helper helper = new Helper();
-        helper.goToProfileCheckAvatar(role);
+        helper.goToProfileCheckAvatar(role, "Kali", "Van");
     }
 
     @AfterMethod
     public void tearDown() {
-        HeaderMenuStudent headerMenuStudent = new HeaderMenuStudent();
-        headerMenuStudent.clickSignOut();
+        headerMenuUser.clickSignOut();
     }
 }

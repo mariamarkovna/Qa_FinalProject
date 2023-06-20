@@ -21,8 +21,8 @@ public class StudentDirectoryPage {
     }
 
     @Step("Enter a Student name")
-    public void enterAStudentName(String studentName) {
-        $(searchField).val(studentName);
+    public void enterAStudentName(String studentsName) {
+        $(searchField).val(studentsName);
     }
 
     @Step("Chose a Student of List")

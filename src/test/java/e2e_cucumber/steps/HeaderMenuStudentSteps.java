@@ -1,22 +1,21 @@
 package e2e_cucumber.steps;
 
-import com.codeborne.selenide.Condition;
-import pages.HeaderMenuStudent;
+import pages.HeaderMenuUser;
 import io.cucumber.java8.En;
 
 import static com.codeborne.selenide.Selenide.page;
 
 public class HeaderMenuStudentSteps implements En {
-    HeaderMenuStudent headerMenuStudent;
+    HeaderMenuUser headerMenuUser;
 
     public HeaderMenuStudentSteps() {
-        Then("user icon shows that we're logged in", () -> {
-            headerMenuStudent = page(HeaderMenuStudent.class);
-            headerMenuStudent.verifyAuthIcon();
+        When("user icon shows that we're logged in", () -> {
+            headerMenuUser = page(HeaderMenuUser.class);
+            headerMenuUser.verifyAuthIcon();
         });
 
-        When("we click Student Directory button", () -> {
-            headerMenuStudent.clickStudentDirectoryBtn();
+        Then("we click Student Directory button", () -> {
+            headerMenuUser.clickStudentDirectoryBtn();
         });
     }
 }

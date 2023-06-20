@@ -7,64 +7,62 @@ import pages.*;
 import static com.codeborne.selenide.Condition.text;
 
 public class Helper {
-    public static void goToStudentDirectory() {
-        HeaderMenuStudent headerMenuStudent = new HeaderMenuStudent();
+    @Step("Go to student directory")
+    public static void goToStudentDirectory(String studentsName) {
+        HeaderMenuUser headerMenuStudent = new HeaderMenuUser();
         headerMenuStudent.clickStudentDirectoryBtn();
         StudentDirectoryPage studentDirectoryPage = new StudentDirectoryPage();
         studentDirectoryPage.appearStDirectoryPage();
-        studentDirectoryPage.enterAStudentName("Kali");
+        studentDirectoryPage.enterAStudentName(studentsName);
         studentDirectoryPage.choseStudentOfList(studentDirectoryPage.studentProfileKali);
         studentDirectoryPage.clickViewProfileBtn();
     }
 
-    public static void goToProfessorSpotlight() {
-        HeaderMenuStudent headerMenuStudent = new HeaderMenuStudent();
+    @Step("Go to professor spotlight")
+    public static void goToProfessorSpotlight(String teachersName) {
+        HeaderMenuUser headerMenuStudent = new HeaderMenuUser();
         headerMenuStudent.clickProfessorsBtn();
         HomePage homePage = new HomePage();
         homePage.PSIsShown();
-        homePage.enterATeacherName("Van");
+        homePage.enterATeacherName(teachersName);
         homePage.choseTeacherOfList(homePage.teacherProfileLink);
         homePage.clickOfTeacherProfileBtn();
     }
 
+    @Step("Check students avatar changed")
     public static void CheckStudentAvatar() {
-        goToStudentDirectory();
         StudentProfilePage studentProfilePage = new StudentProfilePage();
         studentProfilePage.imageChanged();
     }
 
+    @Step("Check teachers avatar changed")
     public static void CheckTeacherAvatar() {
-        goToProfessorSpotlight();
         ProfessorProfilePage professorProfilePage = new ProfessorProfilePage();
         professorProfilePage.teacherImageChanged();
     }
 
-    @Step("Check students email change")
+    @Step("Check students email changed")
     public static void CheckStudentEmailChange(User userData) {
-        goToStudentDirectory();
         studentEmailsText(userData.getNewEmail());
     }
 
-    @Step("Check teacher email change")
+    @Step("Check teachers email changed")
     public static void CheckTeacherEmailChange(User userData) {
-        goToProfessorSpotlight();
         teacherEmailsText(userData.getNewEmail());
     }
 
     @Step("Check students all fields of update profile form changed")
     public static void CheckStudentAllFieldsChange(User userData) {
-        goToStudentDirectory();
         StudentProfilePage studentProfilePage = new StudentProfilePage();
         studentProfilePage.studentsNameIsShown().shouldHave(text(userData.getNewFull_name()));
         studentEmailsText(userData.getEmail());
         CheckStudentAvatar();
         studentProfilePage.aboutMeIsShown().shouldHave(text(userData.getAboutMe()));
-        studentProfilePage.majorNameIsShown().shouldHave(text(userData.getMajor()));//
+        studentProfilePage.majorNameIsShown().shouldHave(text(userData.getMajor()));
     }
 
     @Step("Check teacher all fields of update profile form changed")
     public static void CheckTeacherAllFieldsChange(User userData) {
-        goToProfessorSpotlight();
         ProfessorProfilePage professorProfilePage = new ProfessorProfilePage();
         professorProfilePage.professorProfileIsShow();
         professorProfilePage.teacherName().shouldHave(text(userData.getNewFull_name()));
@@ -74,28 +72,34 @@ public class Helper {
     }
 
     @Step("Go to profile check Avatar")
-    public void goToProfileCheckAvatar(String role) {
+    public void goToProfileCheckAvatar(String role, String studentsName, String teacherName) {
         if (role.equals("student")) {
+            goToStudentDirectory(studentsName);
             CheckStudentAvatar();
         } else if (role.equals("teacher")) {
+            goToProfessorSpotlight(teacherName);
             CheckTeacherAvatar();
         }
     }
 
     @Step("Go to profile check email")
-    public void goToProfileCheckEmail(String role, User userData) {
+    public void goToProfileCheckEmail(String role, User userData, String studentsName, String teacherName) {
         if (role.equals("student")) {
+            goToStudentDirectory(studentsName);
             CheckStudentEmailChange(userData);
         } else if (role.equals("teacher")) {
+            goToProfessorSpotlight(teacherName);
             CheckTeacherEmailChange(userData);
         }
     }
 
     @Step("Go to profile check all fieds")
-    public void goToProfileCheckAllFields(String role, User userData) {
+    public void goToProfileCheckAllFields(String role, User userData, String studentsName, String teacherName) {
         if (role.equals("student")) {
+            goToStudentDirectory(studentsName);
             CheckStudentAllFieldsChange(userData);
         } else if (role.equals("teacher")) {
+            goToProfessorSpotlight(teacherName);
             CheckTeacherAllFieldsChange(userData);
         }
     }

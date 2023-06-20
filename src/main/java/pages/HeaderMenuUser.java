@@ -6,7 +6,7 @@ import io.qameta.allure.Step;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
-public class HeaderMenuStudent {
+public class HeaderMenuUser {
     private static SelenideElement loggedInIcon = $x("//div[@class='MuiBox-root css-4tv0ih']//button[@type='button']");
     private static SelenideElement sudentDirectoryBtn = $("a.MuiButtonBase-root:nth-child(4)");
     private static SelenideElement myProfileBtn = $x("/html/body/div[1]/div[1]/div/div[3]/ul/a[1]");
