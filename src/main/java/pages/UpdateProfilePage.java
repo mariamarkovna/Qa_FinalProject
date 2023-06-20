@@ -67,7 +67,7 @@ public class UpdateProfilePage {
     @Step("add a photo in Avatar field")
     public void chosePhoto() {
         SelenideElement photoInput = $(avatarImageInputField);
-        String filePath = "C:/Users/maria/Desktop/для даны/frozen.jpg";
+        String filePath = "C:/Users/maria/Desktop/для даны/Olaf_from_Disney's_Frozen.png";
         photoInput.sendKeys(filePath);
     }
 
