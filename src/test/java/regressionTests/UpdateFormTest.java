@@ -75,10 +75,9 @@ public class UpdateFormTest extends BaseTest {
     public void addAPhotoAvatarField(User userData, String role) throws InterruptedException {
         signInPage.signIn(userData.getEmail(), userData.getPassword());
         headerMenuUser.clickMyProfile();
-        updateProfilePage.chosePhoto();
+        updateProfilePage.chooseAPhoto();
         updateProfilePage.clickUpdateProfileBtn();
         updateProfilePage.refreshPage();
-        Thread.sleep(2000);
         helper.goToProfileCheckAvatar(role, "Kali", "Van");
     }
 

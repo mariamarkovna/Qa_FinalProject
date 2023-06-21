@@ -55,7 +55,7 @@ public class UpdateProfilePage {
         $(fullNameInputField).val(fullName);
         fillEmail(email);
         $(aboutMeInputField).val(aboutMe);
-        chosePhoto();
+        chooseAPhoto();
         $(enternalProfileInputField).val(enternalProfile);
     }
 
@@ -66,10 +66,10 @@ public class UpdateProfilePage {
     }
 
     @Step("add a photo in Avatar field")
-    public void chosePhoto() {
+    public void chooseAPhoto() {
         SelenideElement photoInput = $(avatarImageInputField);
         //String filePath = "C:/Users/maria/Desktop/для даны/Olaf_from_Disney's_Frozen.png";
-        String filePath = "src/test/resources/images/dog-7991199_192_1.jpg";
+        String filePath = System.getProperty("user.dir") + "/src/test/resources/images/dog-7991199_192_1.jpg";
         photoInput.sendKeys(filePath);
     }
 
