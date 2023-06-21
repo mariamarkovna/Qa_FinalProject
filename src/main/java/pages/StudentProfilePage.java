@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selenide.*;
@@ -81,4 +82,6 @@ public class StudentProfilePage {
     public void imageChanged() {
         boolean studentImageVisible = $("img[src = 'https://v5.airtableusercontent.com/v1/18/18/1686938400000/xqnj_tdhhiWn2x7XJPeGtw/uZ-G7TMSNdRJxM4kHTdilouOQe2mlam1TKEdZqmUUgz3Qhpi7by_yAv2NkvpoiwXYMnhxN413pNu3K-LxjtmXWMnkaypswhnEGii0efYd1hglHYyk2g6kkwhMhKcTzD6IeiCHnDUY-wZEOmcesontA/ylfSo6_v6SSJOLrYRcyQ9AzL8JWg2kzBxftBcVedNzM']").isDisplayed();
     }
+
+
 }

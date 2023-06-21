@@ -10,6 +10,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.*;
 
+import static java.lang.Thread.sleep;
+
 public class UpdateFormTest extends BaseTest {
 
     public User student = User.builder()
@@ -70,11 +72,13 @@ public class UpdateFormTest extends BaseTest {
     @Issue("d_udp4")
     @Test(dataProvider = "userData", testName = "tc_udp7,tc_udp18: Add a photo in Avatar image field with Browse button.")
     @Description("Add photo to avatar field")
-    public void addAPhotoAvatarField(User userData, String role) {
+    public void addAPhotoAvatarField(User userData, String role) throws InterruptedException {
         signInPage.signIn(userData.getEmail(), userData.getPassword());
         headerMenuUser.clickMyProfile();
         updateProfilePage.chosePhoto();
         updateProfilePage.clickUpdateProfileBtn();
+        updateProfilePage.refreshPage();
+        Thread.sleep(2000);
         helper.goToProfileCheckAvatar(role, "Kali", "Van");
     }
 

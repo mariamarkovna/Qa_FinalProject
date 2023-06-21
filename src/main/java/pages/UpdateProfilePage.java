@@ -3,6 +3,7 @@ package pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -67,7 +68,8 @@ public class UpdateProfilePage {
     @Step("add a photo in Avatar field")
     public void chosePhoto() {
         SelenideElement photoInput = $(avatarImageInputField);
-        String filePath = "C:/Users/maria/Desktop/для даны/Olaf_from_Disney's_Frozen.png";
+        //String filePath = "C:/Users/maria/Desktop/для даны/Olaf_from_Disney's_Frozen.png";
+        String filePath = "src/test/resources/images/dog-7991199_192_1.jpg";
         photoInput.sendKeys(filePath);
     }
 
@@ -81,14 +83,10 @@ public class UpdateProfilePage {
     public void clickUpdateProfileBtn() {
         $(updateProfileBtn).click();
         Selenide.sleep(10000);
-
     }
 
-    @Step("Check Update profile")
-    public void changeColorBtn() {
-        SelenideElement button = $(updateProfileBtn);
-        String colorOfButton = button.getCssValue("background-color:#2c2921");
-        clickUpdateProfileBtn();
-        button.shouldNotHave(Condition.attribute("background-color:#2c2921", colorOfButton));
+    @Step("Refresh page")
+    public static void refreshPage() {
+        WebDriverRunner.getWebDriver().navigate().refresh();
     }
 }
