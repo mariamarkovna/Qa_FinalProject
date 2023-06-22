@@ -2,15 +2,12 @@ package regressionTests;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Issue;
-import model.Helper;
 import model.User;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pages.*;
 
-import static java.lang.Thread.sleep;
 
 public class UpdateFormTest extends BaseTest {
 
@@ -20,8 +17,10 @@ public class UpdateFormTest extends BaseTest {
             .newFull_name("Sasha")
             .newEmail("sas@gmail.com")
             .aboutMe("Hi!")
+            .photo("dog-7991199_192_1.jpg")
             .externalProfile("sas.linkedin")
             .major("Astrology")
+            .oldPhoto("mother-5709418_1280.png")
             .build();
     public User teacher = User.builder()
             .email("van@gmail.com")
@@ -29,7 +28,9 @@ public class UpdateFormTest extends BaseTest {
             .newFull_name("Picasso")
             .newEmail("pic@gmail.com")
             .aboutMe("Hi!")
+            .photo("2308809_1.webp")
             .externalProfile("pic.linkedin")
+            .oldPhoto("imgpreview2.jpg")
             .build();
 
     @DataProvider(name = "userData")
@@ -51,7 +52,7 @@ public class UpdateFormTest extends BaseTest {
     public void changeAllFieldValues(User userData, String role) {
         signInPage.signIn(userData.getEmail(), userData.getPassword());
         headerMenuUser.clickMyProfile();
-        updateProfilePage.fillStudUpdateProfileForm(userData.getNewFull_name(), userData.getEmail(), userData.getAboutMe(), userData.getExternalProfile());
+        updateProfilePage.fillStudUpdateProfileForm(userData.getNewFull_name(), userData.getEmail(), userData.getAboutMe(), userData, userData.getExternalProfile());
         updateProfilePage.fillMajor(userData.getMajor());
         updateProfilePage.clickUpdateProfileBtn();
         helper.goToProfileCheckAllFields(role, userData, "Sasha", "Picasso");
@@ -75,10 +76,11 @@ public class UpdateFormTest extends BaseTest {
     public void addAPhotoAvatarField(User userData, String role) throws InterruptedException {
         signInPage.signIn(userData.getEmail(), userData.getPassword());
         headerMenuUser.clickMyProfile();
-        updateProfilePage.chooseAPhoto();
+        updateProfilePage.chooseAPhoto(userData);
         updateProfilePage.clickUpdateProfileBtn();
+        Thread.sleep(2000);
         updateProfilePage.refreshPage();
-        helper.goToProfileCheckAvatar(role, "Kali", "Van");
+        helper.goToProfileCheckAvatar(role, "Kali", "Van", userData);
     }
 
     @AfterMethod

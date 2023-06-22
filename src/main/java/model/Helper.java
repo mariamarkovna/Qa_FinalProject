@@ -7,11 +7,19 @@ import pages.*;
 import static com.codeborne.selenide.Condition.text;
 
 public class Helper {
+    static HomePage homePage = new HomePage();
+    static HomePageUser homePageUser = new HomePageUser();
+    static HeaderMenu headerMenu = new HeaderMenu();
+    static HeaderMenuUser headerMenuUser = new HeaderMenuUser();
+    static SignInPage signInPage = new SignInPage();
+    static UpdateProfilePage updateProfilePage = new UpdateProfilePage();
+    static ProfessorProfilePage professorProfilePage = new ProfessorProfilePage();
+    static StudentDirectoryPage studentDirectoryPage = new StudentDirectoryPage();
+    static StudentProfilePage studentProfilePage = new StudentProfilePage();
+
     @Step("Go to student directory")
     public static void goToStudentDirectory(String studentsName) {
-        HeaderMenuUser headerMenuStudent = new HeaderMenuUser();
-        headerMenuStudent.clickStudentDirectoryBtn();
-        StudentDirectoryPage studentDirectoryPage = new StudentDirectoryPage();
+        headerMenuUser.clickStudentDirectoryBtn();
         studentDirectoryPage.appearStDirectoryPage();
         studentDirectoryPage.enterAStudentName(studentsName);
         studentDirectoryPage.choseStudentOfList(studentDirectoryPage.studentProfileKali);
@@ -20,9 +28,7 @@ public class Helper {
 
     @Step("Go to professor spotlight")
     public static void goToProfessorSpotlight(String teachersName) {
-        HeaderMenuUser headerMenuStudent = new HeaderMenuUser();
-        headerMenuStudent.clickProfessorsBtn();
-        HomePage homePage = new HomePage();
+        headerMenuUser.clickProfessorsBtn();
         homePage.PSIsShown();
         homePage.enterATeacherName(teachersName);
         homePage.choseTeacherOfList(homePage.teacherProfileLink);
@@ -31,13 +37,11 @@ public class Helper {
 
     @Step("Check students avatar changed")
     public static void CheckStudentAvatar() {
-        StudentProfilePage studentProfilePage = new StudentProfilePage();
         studentProfilePage.imageChanged();
     }
 
     @Step("Check teachers avatar changed")
     public static void CheckTeacherAvatar() {
-        ProfessorProfilePage professorProfilePage = new ProfessorProfilePage();
         professorProfilePage.teacherImageChanged();
     }
 
@@ -53,7 +57,6 @@ public class Helper {
 
     @Step("Check students all fields of update profile form changed")
     public static void CheckStudentAllFieldsChange(User userData) {
-        StudentProfilePage studentProfilePage = new StudentProfilePage();
         studentProfilePage.studentsNameIsShown().shouldHave(text(userData.getNewFull_name()));
         studentEmailsText(userData.getEmail());
         CheckStudentAvatar();
@@ -63,7 +66,6 @@ public class Helper {
 
     @Step("Check teacher all fields of update profile form changed")
     public static void CheckTeacherAllFieldsChange(User userData) {
-        ProfessorProfilePage professorProfilePage = new ProfessorProfilePage();
         professorProfilePage.professorProfileIsShow();
         professorProfilePage.teacherName().shouldHave(text(userData.getNewFull_name()));
         professorProfilePage.teacherAboutMe().shouldHave(text(userData.getAboutMe()));
@@ -72,13 +74,15 @@ public class Helper {
     }
 
     @Step("Go to profile check Avatar")
-    public void goToProfileCheckAvatar(String role, String studentsName, String teacherName) {
+    public void goToProfileCheckAvatar(String role, String studentsName, String teacherName, User userData) {
         if (role.equals("student")) {
             goToStudentDirectory(studentsName);
             CheckStudentAvatar();
+            returnStudentOldPhoto(userData);
         } else if (role.equals("teacher")) {
             goToProfessorSpotlight(teacherName);
             CheckTeacherAvatar();
+            returnTeacherOldPhoto(userData);
         }
     }
 
@@ -106,28 +110,41 @@ public class Helper {
 
     @Step("students email text")
     public static void studentEmailsText(String textEmailStudent) {
-        StudentProfilePage studentProfilePage = new StudentProfilePage();
         studentProfilePage.studentsEmailIsShown().shouldHave(Condition.text(textEmailStudent));
     }
 
     @Step("teachers email text")
     public static void teacherEmailsText(String textEmailTeacher) {
-        ProfessorProfilePage professorProfilePage = new ProfessorProfilePage();
         professorProfilePage.teacherEmail().shouldHave(Condition.text(textEmailTeacher));
     }
 
     @Step("check create user via UI")
     public static void checkCreatedUserViaUI() {
-        new HeaderMenu().clickSignInBtn();
-        new SignInPage().signIn("faker@gmail.com", "123456");
-        new HomePageUser().getUsersHomePageElement().shouldHave(text("NoCode University at a glance"));
+        headerMenu.clickSignInBtn();
+        signInPage.signIn("faker@gmail.com", "123456");
+        homePageUser.getUsersHomePageElement().shouldHave(text("NoCode University at a glance"));
     }
 
     @Step("check delete user via UI")
     public static void checkDeletedUserViaUI() {
-        new HeaderMenu().clickSignInBtn();
-        SignInPage signInPage = new SignInPage();
+        headerMenu.clickSignInBtn();
         signInPage.signIn("faker@gmail.com", "123456");
         signInPage.confirmErrorMessage().shouldHave(text("Invalid email or password"));
+    }
+
+    @Step("return old students photo")
+    public static void returnStudentOldPhoto(User userData) {
+        headerMenuUser.clickMyProfile();
+        updateProfilePage.chooseAOldPhoto(userData);
+        updateProfilePage.clickUpdateProfileBtn();
+        updateProfilePage.refreshPage();
+    }
+
+    @Step("return old teachers photo")
+    public static void returnTeacherOldPhoto(User userData) {
+        headerMenuUser.clickMyProfile();
+        updateProfilePage.chooseAOldPhoto(userData);
+        updateProfilePage.clickUpdateProfileBtn();
+        updateProfilePage.refreshPage();
     }
 }

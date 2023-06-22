@@ -5,6 +5,7 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
+import model.User;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
@@ -50,12 +51,12 @@ public class UpdateProfilePage {
     }
 
     @Step("fill student Update Profile form ")
-    public void fillStudUpdateProfileForm(String fullName, String email, String aboutMe, String enternalProfile) {
+    public void fillStudUpdateProfileForm(String fullName, String email, String aboutMe, User userData, String enternalProfile) {
         choseAStudentRole();
         $(fullNameInputField).val(fullName);
         fillEmail(email);
         $(aboutMeInputField).val(aboutMe);
-        chooseAPhoto();
+        chooseAPhoto(userData);
         $(enternalProfileInputField).val(enternalProfile);
     }
 
@@ -66,10 +67,16 @@ public class UpdateProfilePage {
     }
 
     @Step("add a photo in Avatar field")
-    public void chooseAPhoto() {
+    public void chooseAPhoto(User userData) {
         SelenideElement photoInput = $(avatarImageInputField);
-        //String filePath = "C:/Users/maria/Desktop/для даны/Olaf_from_Disney's_Frozen.png";
-        String filePath = System.getProperty("user.dir") + "/src/test/resources/images/dog-7991199_192_1.jpg";
+        String filePathPhoto = System.getProperty("user.dir") + "/src/test/resources/images/" + userData.getPhoto();
+        photoInput.sendKeys(filePathPhoto);
+    }
+
+    @Step("add a old photo in Avatar field")
+    public void chooseAOldPhoto(User userData) {
+        SelenideElement photoInput = $(avatarImageInputField);
+        String filePath = System.getProperty("user.dir") + "/src/test/resources/images/" + userData.getOldPhoto();
         photoInput.sendKeys(filePath);
     }
 
