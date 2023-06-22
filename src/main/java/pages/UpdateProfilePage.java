@@ -56,8 +56,7 @@ public class UpdateProfilePage {
         $(fullNameInputField).val(fullName);
         fillEmail(email);
         $(aboutMeInputField).val(aboutMe);
-        chooseAPhoto(userData);
-        //setPhoto(photoName);
+        setPhoto(userData.getPhoto());
         $(enternalProfileInputField).val(enternalProfile);
     }
 
@@ -68,25 +67,11 @@ public class UpdateProfilePage {
     }
 
     @Step("add a photo in Avatar field")
-    public void chooseAPhoto(User userData) {
+    public void setPhoto(String photoName) {
         SelenideElement photoInput = $(avatarImageInputField);
-        String filePathPhoto = System.getProperty("user.dir") + "/src/test/resources/images/" + userData.getPhoto();
+        String filePathPhoto = System.getProperty("user.dir") + "/src/test/resources/images/" + photoName;
         photoInput.sendKeys(filePathPhoto);
     }
-
-    @Step("add a old photo in Avatar field")
-    public void chooseAOldPhoto(User userData) {
-        SelenideElement photoInput = $(avatarImageInputField);
-        String filePath = System.getProperty("user.dir") + "/src/test/resources/images/" + userData.getOldPhoto();
-        photoInput.sendKeys(filePath);
-    }
-
-//    @Step("add a photo in Avatar field")
-//    public void setPhoto(String photoName) {
-//        SelenideElement photoInput = $(avatarImageInputField);
-//        String filePathPhoto = System.getProperty("user.dir") + "/src/test/resources/images/" + photoName;
-//        photoInput.sendKeys(filePathPhoto);
-//    }
 
     @Step("fill Major field")
     public void fillMajor(String major) {

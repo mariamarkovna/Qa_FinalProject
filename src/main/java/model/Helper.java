@@ -108,6 +108,7 @@ public class Helper {
         }
     }
 
+
     @Step("students email text")
     public static void studentEmailsText(String textEmailStudent) {
         studentProfilePage.studentsEmailIsShown().shouldHave(Condition.text(textEmailStudent));
@@ -135,7 +136,7 @@ public class Helper {
     @Step("return old students photo")
     public static void returnStudentOldPhoto(User userData) {
         headerMenuUser.clickMyProfile();
-        updateProfilePage.chooseAOldPhoto(userData);
+        updateProfilePage.setPhoto(userData.getOldPhoto());
         updateProfilePage.clickUpdateProfileBtn();
         updateProfilePage.refreshPage();
     }
@@ -143,7 +144,7 @@ public class Helper {
     @Step("return old teachers photo")
     public static void returnTeacherOldPhoto(User userData) {
         headerMenuUser.clickMyProfile();
-        updateProfilePage.chooseAOldPhoto(userData);
+        updateProfilePage.setPhoto(userData.getOldPhoto());
         updateProfilePage.clickUpdateProfileBtn();
         updateProfilePage.refreshPage();
     }

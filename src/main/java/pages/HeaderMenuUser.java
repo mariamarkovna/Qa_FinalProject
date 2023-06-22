@@ -31,7 +31,6 @@ public class HeaderMenuUser {
 
     @Step("Appear drop-down menu")
     public void verifyDropDownMenu() {
-        //return $(menuProfile);
         menuProfile.isDisplayed();
     }
 
