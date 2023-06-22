@@ -57,6 +57,7 @@ public class UpdateProfilePage {
         fillEmail(email);
         $(aboutMeInputField).val(aboutMe);
         chooseAPhoto(userData);
+        //setPhoto(photoName);
         $(enternalProfileInputField).val(enternalProfile);
     }
 
@@ -79,6 +80,13 @@ public class UpdateProfilePage {
         String filePath = System.getProperty("user.dir") + "/src/test/resources/images/" + userData.getOldPhoto();
         photoInput.sendKeys(filePath);
     }
+
+//    @Step("add a photo in Avatar field")
+//    public void setPhoto(String photoName) {
+//        SelenideElement photoInput = $(avatarImageInputField);
+//        String filePathPhoto = System.getProperty("user.dir") + "/src/test/resources/images/" + photoName;
+//        photoInput.sendKeys(filePathPhoto);
+//    }
 
     @Step("fill Major field")
     public void fillMajor(String major) {
